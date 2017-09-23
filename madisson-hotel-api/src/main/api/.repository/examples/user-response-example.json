@@ -1,0 +1,16 @@
+{
+  "userId": 1,
+  "name": "aparna",
+  "address":{
+    "address1": "30080 fremont blvd",
+    "address2": "street 27",
+    "city": "fremont",
+    "state": "california",
+    "zipcode": "94536",
+    "country": "united states of america"	
+  },
+  "phoneNumber": "9856968900",
+  "email":"aparnagk67@gmail.com",
+  "userName":"aparnagk67",
+  "password":"aparna"
+}

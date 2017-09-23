@@ -1,0 +1,92 @@
+#%RAML 0.8
+#baseUri: http://localhost/api/
+baseUri: https://mocksvc.mulesoft.com/mocks/5ee9e5d9-f659-41f2-a691-9ae194b23bd2/api/
+title: Madisson Hotels API
+version: 1.0
+schemas: 
+  - hotel: !include schemas/hotel-schema.json
+  - hotels: !include schemas/hotels-schema.json
+  - user: !include schemas/user-schema.json
+  - users: !include schemas/users-schema.json
+  - reservation: !include schemas/reservation-schema.json
+  - reservations: !include schemas/reservations-schema.json
+/hotels:
+  get:
+    queryParameters:
+      zipcode:
+    responses: 
+      200:
+        body: 
+          application/json:
+            schema: hotels
+            example: !include examples/hotels-response-example.json
+  post:
+     body: 
+       application/json:
+        schema: hotels
+        example: !include examples/hotels-request-example.json
+     responses: 
+       201:
+         body: 
+           application/json:
+            schema: hotels
+            example: !include examples/hotels-response-example.json
+  /{hotelid}:
+   get:
+     responses: 
+       200:
+         body: 
+           application/json:
+             schema: hotel
+             example: !include examples/hotel-response-example.json
+   /reserve:
+    post:
+      body: 
+        application/json:
+          schema: reservation
+          example: !include examples/reservation-request-example.json
+      responses: 
+        201:
+          body: 
+            application/json:
+              schema: reservation
+              example: !include examples/reservation-response-example.json
+/users:
+  post:
+    body: 
+      application/json:
+        schema: user
+        example: !include examples/user-request-example.json
+    responses: 
+      201:
+        body: 
+          application/json:
+            schema: user
+            example: !include examples/user-response-example.json
+  get:
+    responses: 
+      200:
+        body: 
+          application/json:
+            schema: users
+            example: !include examples/users-response-example.json
+  /{userId}:
+    get:
+      responses: 
+        200:
+          body: 
+            application/json:
+              schema: user
+              example: !include examples/user-response-example.json
+    /myreservations:
+      get:
+        queryParameters: 
+          checkInDate:
+        responses: 
+          200:
+            body: 
+              application/json:
+                schema: reservations
+                example: !include examples/reservations-response-example.json
+                
+    

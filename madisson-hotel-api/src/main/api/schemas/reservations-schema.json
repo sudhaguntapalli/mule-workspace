@@ -1,0 +1,95 @@
+{
+  "required": true,
+  "$schema" : "http://json-schema.org/draft-03/schema",
+  "type": "object",
+  "properties": {
+    "reservations": {
+      "type": "array",
+      "required": true,
+      "items": [
+        {
+          "type": "object",
+          "properties": {
+            "reservationId": {
+              "type": "number"
+            },
+            "userId": {
+              "type": "number",
+              "required": true
+            },
+            "hotelId": {
+              "type": "number",
+              "required": true
+            },
+            "checkInDate": {
+              "type": "string",
+              "required": true
+            },
+            "checkOutDate": {
+              "type": "string",
+              "required": true
+            },
+            "adults": {
+              "type": "number",
+              "required": true
+            },
+            "childs": {
+              "type": "number",
+              "required": true
+            },
+            "status": {
+              "type": "string",
+              "required": true,
+              "enum": ["pending","confirmed","cancelled"]
+            },
+            "createDateTime": {
+              "type": "string",
+              "required": true
+            }
+          } 
+        },
+        {
+          "type": "object",
+          "properties": {
+            "reservationId": {
+              "type": "number"
+            },
+            "userId": {
+              "type": "number",
+              "required": true
+            },
+            "hotelId": {
+              "type": "number",
+              "required": true
+            },
+            "checkInDate": {
+              "type": "string",
+              "required": true
+            },
+            "checkOutDate": {
+              "type": "string",
+              "required": true
+            },
+            "adults": {
+              "type": "number",
+              "required": true
+            },
+            "childs": {
+              "type": "number",
+              "required": true
+            },
+            "status": {
+              "type": "string",
+              "required": true,
+              "enum": ["pending","confirmed","cancelled"]
+            },
+            "createDateTime": {
+              "type": "string",
+              "required": true
+            }
+          }
+        }
+      ]
+    }
+  } 
+}

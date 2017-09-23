@@ -1,0 +1,29 @@
+{
+  "hotelId":1,
+  "roomId":10,
+  "name": "Hyatt",
+  "address":{
+    "address1": "36000 fremont blvd",
+    "address2": "street 57",
+    "city": "fremont",
+    "state": "california",
+    "zipcode": "94536",
+    "country": "united states of america"	
+  },
+  "phoneNumber": "98659689070",
+  "rating": 3,
+  "comments": ["good hotel","very humble","friendly staff"],
+  "price_details": {
+    "capacity": 4,
+    "bedSize": "king",
+    "bedsAvailable": 3,
+    "price": 186.99	
+  },
+  "services": {
+    "cleaningFee": 50,
+    "parkingFee":  30,
+    "breakfastIncluded": true,
+    "wifiAccess": true,
+    "cautionDeposit": 100
+  }
+}

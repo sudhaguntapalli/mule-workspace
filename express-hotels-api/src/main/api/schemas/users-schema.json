@@ -1,0 +1,129 @@
+{
+  "required": true,
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "type": "object",
+  "properties": {
+    "users": {
+      "type": "array",
+      "required": true,
+      "items": [
+        {
+          "type": "object",
+          "properties": {
+            "userId": {
+              "type": "number"
+            },
+            "name": {
+              "type": "string",
+              "required": true
+            },
+            "address": {
+              "type": "object",
+              "required": true,
+              "properties": {
+                "address1": {
+                  "type": "string",
+                  "required": true
+                },
+                "address2": {
+                  "type": "string",
+                  "required": true
+                },
+                "city": {
+                  "type": "string",
+                  "required": true
+                },
+                "state": {
+                  "type": "string",
+                  "required": true
+                },
+                "zipcode": {
+                  "type": "string",
+                  "required": true
+                },
+                "country": {
+                  "type": "string",
+                  "required": true
+                }
+              }
+            },
+            "phoneNumber": {
+              "type": "string",
+              "required": true
+            },
+            "email": {
+              "type": "string",
+              "required": true
+            },
+            "userName": {
+              "type": "string",
+              "required": true
+            },
+            "password": {
+              "type": "string",
+              "required": true
+            }
+          }
+        },
+        {
+          "type": "object",
+          "properties": {
+            "userId": {
+              "type": "number"
+            },
+            "name": {
+              "type": "string",
+              "required": true
+            },
+            "address": {
+              "type": "object",
+              "required": true,
+              "properties": {
+                "address1": {
+                  "type": "string",
+                  "required": true
+                },
+                "address2": {
+                  "type": "string",
+                  "required": true
+                },
+                "city": {
+                  "type": "string",
+                  "required": true
+                },
+                "state": {
+                  "type": "string",
+                  "required": true
+                },
+                "zipcode": {
+                  "type": "string",
+                  "required": true
+                },
+                "country": {
+                  "type": "string",
+                  "required": true
+                }
+              }
+            },
+            "phoneNumber": {
+              "type": "string",
+              "required": true
+            },
+            "email": {
+              "type": "string",
+              "required": true
+            },
+            "userName": {
+              "type": "string",
+              "required": true
+            },
+            "password": {
+              "type": "string",
+              "required": true
+            }
+          }
+        }        
+      ]
+    }
+  }
+}

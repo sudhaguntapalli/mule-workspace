@@ -1,0 +1,32 @@
+[
+  {
+    "name": "aparna",
+    "address":{
+      "address1": "30080 fremont blvd",
+      "address2": "street 27",
+      "city": "fremont",
+      "state": "california",
+      "zipcode": "94536",
+      "country": "united states of america"	
+    },
+    "phoneNumber": "9856968900",
+    "email":"aparnagk67@gmail.com",
+    "userName":"aparnagk67",
+    "password":"aparna" 
+  },
+  {
+    "name": "aparna2",
+    "address":{
+      "address1": "30180 fremont blvd",
+      "address2": "street 27",
+      "city": "fremont",
+      "state": "california",
+      "zipcode": "94536",
+      "country": "united states of america"	
+    },
+    "phoneNumber": "9826968900",
+    "email":"aparnagk68@gmail.com",
+    "userName":"aparnagk68",
+    "password":"aparna"
+  }
+]

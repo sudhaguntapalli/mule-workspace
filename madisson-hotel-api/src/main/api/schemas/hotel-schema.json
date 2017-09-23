@@ -1,0 +1,118 @@
+{
+  "required": true,
+  "$schema" : "http://json-schema.org/draft-03/schema",
+  "type": "object",
+  "properties": {
+    "hotelId": {
+      "type": "number"
+    },
+    "roomId": {
+      "type": "number",
+      "required": true
+    },
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "address": {
+      "type": "object",
+      "required": true,
+      "properties": {
+        "address1": {
+          "type": "string",
+          "required": true
+        },
+        "address2": {
+          "type": "string",
+          "required": true
+        },
+        "city": {
+          "type": "string",
+          "required": true
+        },
+        "state": {
+          "type": "string",
+          "required": true
+        },
+        "zipcode": {
+          "type": "string",
+          "required": true
+        },
+        "country": {
+          "type": "string",
+          "required": true
+        }   
+      }
+    },
+    "phoneNumber": {
+      "type": "string",
+      "required": true
+    },
+    "rating": {
+      "type": "number",
+      "required": true
+    },
+    "comments": {
+      "type": "array",
+      "required": true,
+      "items":[
+        {
+          "type": "string",
+          "required": true
+        },
+        {
+          "type": "string",
+          "required": true
+        }
+      ]
+    },
+    "price_details": {
+      "type": "object",
+      "required": true,
+      "properties": {
+        "capacity": {
+          "type": "number",
+          "required": true
+        },
+        "bedSize": {
+          "type": "string",
+          "required": true
+        },
+        "bedsAvailable": {
+          "type": "number",
+          "required": true
+        },
+        "price": {
+          "type": "number",
+          "required": true 
+        }
+      },
+      "services": {
+        "type": "object",
+        "required": true,
+        "properties": {
+          "cleaningFee": {
+            "type": "number",
+            "required": true
+          },
+          "parkingFees": {
+            "type": "number",
+            "required": true
+          },
+          "breakfastIncluded": {
+            "type": "boolean",
+            "required": true
+          },
+          "wifiAccess": {
+            "type": "boolean",
+            "required": true
+          },
+          "cautionDeposit": {
+            "type": "number",
+            "required": true
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "reservationId": 1,
+  "userId": 1,
+  "hotelId":1,
+  "checkInDate": "02/19/2017",
+  "checkOutDate": "02/23/2017",
+  "adults": 2,
+  "childs": 0,
+  "status": "confirmed",
+  "createDateTime": "02/08/2017"
+}

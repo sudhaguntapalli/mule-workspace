@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mule xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:apikit="http://www.mulesoft.org/schema/mule/apikit" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:spring="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/apikit http://www.mulesoft.org/schema/mule/apikit/current/mule-apikit.xsd
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
+
+    <apikit:config name="api-config" raml="api.raml" consoleEnabled="false" doc:name="Router"/>
+    <flow name="api-main">
+        <http:listener config-ref="Express_HTTP_Listener_8084_Configuration" path="/api/*" doc:name="HTTP"/>
+        <apikit:router config-ref="api-config" doc:name="APIkit Router"/>
+        <exception-strategy ref="api-apiKitGlobalExceptionMapping" doc:name="Reference Exception Strategy"/>
+    </flow>
+    <flow name="api-console">
+        <http:listener config-ref="Express_HTTP_Listener_8084_Configuration" path="/console/*" doc:name="HTTP"/>
+        <apikit:console config-ref="api-config" doc:name="APIkit Console"/>
+    </flow>
+    <flow name="get:/users:api-config">
+        <set-payload value="{&#xA;  &quot;users&quot;:[&#xA;    {&#xA;      &quot;name&quot;: &quot;aparna&quot;,&#xA;      &quot;address&quot;:{&#xA;        &quot;address1&quot;: &quot;30080 fremont blvd&quot;,&#xA;        &quot;address2&quot;: &quot;street 27&quot;,&#xA;        &quot;city&quot;: &quot;fremont&quot;,&#xA;        &quot;state&quot;: &quot;california&quot;,&#xA;        &quot;zipcode&quot;: &quot;94536&quot;,&#xA;        &quot;country&quot;: &quot;united states of america&quot;&#x9;&#xA;      },&#xA;      &quot;phoneNumber&quot;: &quot;9856968900&quot;,&#xA;      &quot;email&quot;:&quot;aparnagk67@gmail.com&quot;,&#xA;      &quot;userName&quot;:&quot;aparnagk67&quot;,&#xA;      &quot;password&quot;:&quot;aparna&quot; &#xA;    },&#xA;    {&#xA;      &quot;name&quot;: &quot;aparna2&quot;,&#xA;      &quot;address&quot;:{&#xA;        &quot;address1&quot;: &quot;30180 fremont blvd&quot;,&#xA;        &quot;address2&quot;: &quot;street 27&quot;,&#xA;        &quot;city&quot;: &quot;fremont&quot;,&#xA;        &quot;state&quot;: &quot;california&quot;,&#xA;        &quot;zipcode&quot;: &quot;94536&quot;,&#xA;        &quot;country&quot;: &quot;united states of america&quot;&#x9;&#xA;      },&#xA;      &quot;phoneNumber&quot;: &quot;9826968900&quot;,&#xA;      &quot;email&quot;:&quot;aparnagk68@gmail.com&quot;,&#xA;      &quot;userName&quot;:&quot;aparnagk68&quot;,&#xA;      &quot;password&quot;:&quot;aparna&quot;&#xA;    }&#xA;  ]&#xA;}" doc:name="Set Payload"/>
+    </flow>
+    <flow name="get:/hotels:api-config">
+        <flow-ref name="express-hotels-flow" doc:name="express-hotels-flow"/>
+
+    </flow>
+    <flow name="get:/hotels/{hotelid}:api-config">
+        <set-payload value="{&#xA;  &quot;hotelId&quot;:1,&#xA;  &quot;roomId&quot;:10,&#xA;  &quot;name&quot;: &quot;Maddona&quot;,&#xA;  &quot;address&quot;:{&#xA;    &quot;address1&quot;: &quot;36000 fremont blvd&quot;,&#xA;    &quot;address2&quot;: &quot;street 57&quot;,&#xA;    &quot;city&quot;: &quot;fremont&quot;,&#xA;    &quot;state&quot;: &quot;california&quot;,&#xA;    &quot;zipcode&quot;: &quot;94536&quot;,&#xA;    &quot;country&quot;: &quot;united states of america&quot;&#x9;&#xA;  },&#xA;  &quot;phoneNumber&quot;: &quot;98659689070&quot;,&#xA;  &quot;rating&quot;: 3,&#xA;  &quot;comments&quot;: [&quot;good hotel&quot;,&quot;very humble&quot;,&quot;friendly staff&quot;],&#xA;  &quot;price_details&quot;: {&#xA;    &quot;capacity&quot;: 4,&#xA;    &quot;bedSize&quot;: &quot;king&quot;,&#xA;    &quot;bedsAvailable&quot;: 3,&#xA;    &quot;price&quot;: 186.99&#x9;&#xA;  },&#xA;  &quot;services&quot;: {&#xA;    &quot;cleaningFee&quot;: 50,&#xA;    &quot;parkingFee&quot;:  30,&#xA;    &quot;breakfastIncluded&quot;: true,&#xA;    &quot;wifiAccess&quot;: true,&#xA;    &quot;cautionDeposit&quot;: 100&#xA;  }&#xA;}" doc:name="Set Payload"/>
+    </flow>
+    <flow name="get:/users/{userId}:api-config">
+        <set-payload value="{&#xA;  &quot;userId&quot;: 1,&#xA;  &quot;name&quot;: &quot;aparna&quot;,&#xA;  &quot;address&quot;:{&#xA;    &quot;address1&quot;: &quot;30080 fremont blvd&quot;,&#xA;    &quot;address2&quot;: &quot;street 27&quot;,&#xA;    &quot;city&quot;: &quot;fremont&quot;,&#xA;    &quot;state&quot;: &quot;california&quot;,&#xA;    &quot;zipcode&quot;: &quot;94536&quot;,&#xA;    &quot;country&quot;: &quot;united states of america&quot;&#x9;&#xA;  },&#xA;  &quot;phoneNumber&quot;: &quot;9856968900&quot;,&#xA;  &quot;email&quot;:&quot;aparnagk67@gmail.com&quot;,&#xA;  &quot;userName&quot;:&quot;aparnagk67&quot;,&#xA;  &quot;password&quot;:&quot;aparna&quot;&#xA;}" doc:name="Set Payload"/>
+    </flow>
+    <flow name="get:/users/{userId}/myreservations:api-config">
+        <set-payload value="{&#xA;  &quot;reservations&quot;:[&#xA;    {&#xA;      &quot;reservationId&quot;: 1,&#xA;      &quot;userId&quot;: 1,&#xA;      &quot;hotelId&quot;:1,&#xA;      &quot;checkInDate&quot;: &quot;02/19/2017&quot;,&#xA;      &quot;checkOutDate&quot;: &quot;02/23/2017&quot;,&#xA;      &quot;adults&quot;: 2,&#xA;      &quot;childs&quot;: 0,&#xA;      &quot;status&quot;: &quot;confirmed&quot;,&#xA;      &quot;createDateTime&quot;: &quot;02/08/2017&quot;&#xA;    },&#xA;    {&#xA;      &quot;reservationId&quot;: 2,&#xA;      &quot;userId&quot;: 1,&#xA;      &quot;hotelId&quot;:2,&#xA;      &quot;checkInDate&quot;: &quot;03/22/2017&quot;,&#xA;      &quot;checkOutDate&quot;: &quot;03/28/2017&quot;,&#xA;      &quot;adults&quot;: 2,&#xA;      &quot;childs&quot;: 0,&#xA;      &quot;status&quot;: &quot;confirmed&quot;,&#xA;      &quot;createDateTime&quot;: &quot;02/08/2017&quot;&#xA;    }&#xA;  ]&#xA;}" doc:name="Set Payload"/>
+    </flow>
+    <flow name="post:/hotels:application/json:api-config">
+        <set-property propertyName="Content-Type" value="application/json" doc:name="Property"/>
+        <set-payload value="{&#xA;  &quot;hotels&quot;:[&#xA;    {&#xA;      &quot;hotelId&quot;:1,&#xA;      &quot;roomId&quot;:10,&#xA;      &quot;name&quot;: &quot;Maddona&quot;,&#xA;      &quot;address&quot;:{&#xA;        &quot;address1&quot;: &quot;36000 fremont blvd&quot;,&#xA;        &quot;address2&quot;: &quot;street 57&quot;,&#xA;        &quot;city&quot;: &quot;fremont&quot;,&#xA;        &quot;state&quot;: &quot;california&quot;,&#xA;        &quot;zipcode&quot;: &quot;94536&quot;,&#xA;        &quot;country&quot;: &quot;united states of america&quot;&#x9;&#xA;      },&#xA;      &quot;phoneNumber&quot;: &quot;98659689070&quot;,&#xA;      &quot;rating&quot;: 3,&#xA;      &quot;comments&quot;: [&quot;good hotel&quot;,&quot;very humble&quot;,&quot;friendly staff&quot;],&#xA;      &quot;price_details&quot;: {&#xA;        &quot;capacity&quot;: 4,&#xA;        &quot;bedSize&quot;: &quot;king&quot;,&#xA;        &quot;bedsAvailable&quot;: 3,&#xA;        &quot;price&quot;: 186.99&#x9;&#xA;      },&#xA;      &quot;services&quot;: {&#xA;        &quot;cleaningFee&quot;: 50,&#xA;        &quot;parkingFee&quot;:  30,&#xA;        &quot;breakfastIncluded&quot;: true,&#xA;        &quot;wifiAccess&quot;: true,&#xA;        &quot;cautionDeposit&quot;: 100&#xA;      }&#xA;    },&#xA;    {&#xA;      &quot;hotelId&quot;:2,&#xA;      &quot;roomId&quot;:5,&#xA;      &quot;name&quot;: &quot;Madison&quot;,&#xA;      &quot;address&quot;:{&#xA;        &quot;address1&quot;: &quot;37000 fremont blvd&quot;,&#xA;        &quot;address2&quot;: &quot;street 47&quot;,&#xA;        &quot;city&quot;: &quot;fremont&quot;,&#xA;        &quot;state&quot;: &quot;california&quot;,&#xA;        &quot;zipcode&quot;: &quot;94536&quot;,&#xA;        &quot;country&quot;: &quot;united states of america&quot;&#x9;&#xA;      },&#xA;      &quot;phoneNumber&quot;: &quot;98659689070&quot;,&#xA;      &quot;rating&quot;: 3,&#xA;      &quot;comments&quot;: [&quot;good hotel&quot;,&quot;very humble&quot;,&quot;friendly staff&quot;],&#xA;      &quot;price_details&quot;: {&#xA;        &quot;capacity&quot;: 4,&#xA;        &quot;bedSize&quot;: &quot;king&quot;,&#xA;        &quot;bedsAvailable&quot;: 3,&#xA;        &quot;price&quot;: 186.99&#x9;&#xA;      },&#xA;      &quot;services&quot;: {&#xA;        &quot;cleaningFee&quot;: 50,&#xA;        &quot;parkingFee&quot;:  30,&#xA;        &quot;breakfastIncluded&quot;: true,&#xA;        &quot;wifiAccess&quot;: true,&#xA;        &quot;cautionDeposit&quot;: 100&#xA;      }&#xA;    }&#xA;  ]&#xA;}" doc:name="Set Payload"/>
+    </flow>
+    <flow name="post:/users:application/json:api-config">
+        <set-property propertyName="Content-Type" value="application/json" doc:name="Property"/>
+        <set-payload value="{&#xA;  &quot;userId&quot;: 1,&#xA;  &quot;name&quot;: &quot;aparna&quot;,&#xA;  &quot;address&quot;:{&#xA;    &quot;address1&quot;: &quot;30080 fremont blvd&quot;,&#xA;    &quot;address2&quot;: &quot;street 27&quot;,&#xA;    &quot;city&quot;: &quot;fremont&quot;,&#xA;    &quot;state&quot;: &quot;california&quot;,&#xA;    &quot;zipcode&quot;: &quot;94536&quot;,&#xA;    &quot;country&quot;: &quot;united states of america&quot;&#x9;&#xA;  },&#xA;  &quot;phoneNumber&quot;: &quot;9856968900&quot;,&#xA;  &quot;email&quot;:&quot;aparnagk67@gmail.com&quot;,&#xA;  &quot;userName&quot;:&quot;aparnagk67&quot;,&#xA;  &quot;password&quot;:&quot;aparna&quot;&#xA;}" doc:name="Set Payload"/>
+    </flow>
+    <flow name="post:/hotels/{hotelid}/reserve:application/json:api-config">
+        <set-property propertyName="Content-Type" value="application/json" doc:name="Property"/>
+        <set-payload value="{&#xA;  &quot;reservationId&quot;: 1,&#xA;  &quot;userId&quot;: 1,&#xA;  &quot;hotelId&quot;:1,&#xA;  &quot;checkInDate&quot;: &quot;02/19/2017&quot;,&#xA;  &quot;checkOutDate&quot;: &quot;02/23/2017&quot;,&#xA;  &quot;adults&quot;: 2,&#xA;  &quot;childs&quot;: 0,&#xA;  &quot;status&quot;: &quot;confirmed&quot;,&#xA;  &quot;createDateTime&quot;: &quot;02/08/2017&quot;&#xA;}" doc:name="Set Payload"/>
+    </flow>
+    <apikit:mapping-exception-strategy name="api-apiKitGlobalExceptionMapping">
+        <apikit:mapping statusCode="404">
+            <apikit:exception value="org.mule.module.apikit.exception.NotFoundException" />
+            <set-property propertyName="Content-Type" value="application/json" doc:name="Property"/>
+            <set-payload value="{ &quot;message&quot;: &quot;Resource not found&quot; }" doc:name="Set Payload"/>
+        </apikit:mapping>
+        <apikit:mapping statusCode="405">
+            <apikit:exception value="org.mule.module.apikit.exception.MethodNotAllowedException" />
+            <set-property propertyName="Content-Type" value="application/json" doc:name="Property"/>
+            <set-payload value="{ &quot;message&quot;: &quot;Method not allowed&quot; }" doc:name="Set Payload"/>
+        </apikit:mapping>
+        <apikit:mapping statusCode="415">
+            <apikit:exception value="org.mule.module.apikit.exception.UnsupportedMediaTypeException" />
+            <set-property propertyName="Content-Type" value="application/json" doc:name="Property"/>
+            <set-payload value="{ &quot;message&quot;: &quot;Unsupported media type&quot; }" doc:name="Set Payload"/>
+        </apikit:mapping>
+        <apikit:mapping statusCode="406">
+            <apikit:exception value="org.mule.module.apikit.exception.NotAcceptableException" />
+            <set-property propertyName="Content-Type" value="application/json" doc:name="Property"/>
+            <set-payload value="{ &quot;message&quot;: &quot;Not acceptable&quot; }" doc:name="Set Payload"/>
+        </apikit:mapping>
+        <apikit:mapping statusCode="400">
+            <apikit:exception value="org.mule.module.apikit.exception.BadRequestException" />
+            <set-property propertyName="Content-Type" value="application/json" doc:name="Property"/>
+            <set-payload value="{ &quot;message&quot;: &quot;Bad request&quot; }" doc:name="Set Payload"/>
+        </apikit:mapping>
+    </apikit:mapping-exception-strategy>
+</mule>
